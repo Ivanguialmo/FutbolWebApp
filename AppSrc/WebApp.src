@@ -57,6 +57,10 @@ Object oWebApp is a cWebApp
                         Set psCaption to "SelectPosicion"
 
                         WebRegisterPath ntNavigateBegin oSelectPosicion
+                    Object oSelectLigaItem1 is a cWebMenuItem
+                        Set psCaption to "SelectLiga"
+
+                        WebRegisterPath ntNavigateBegin oSelectLiga
 
                         Procedure OnClick
                             Forward Send OnClick
@@ -146,6 +150,8 @@ Object oWebApp is a cWebApp
     Use Dashboard.wo
     Use ZoomPosicion.wo
     Use SelectPosicion.wo
+    Use ZoomLiga.wo
+    Use SelectLiga.wo
     Set phoDefaultView to oDashboard
 
 End_Object
