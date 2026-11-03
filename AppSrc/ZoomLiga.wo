@@ -9,10 +9,13 @@ Use cWebMenuItem.pkg
 Use cWebForm.pkg
 
 Use cligaDataDictionary.dd
+Use cWebButton.pkg
+Use cWebList.pkg
+Use cWebColumn.pkg
 
 Object oZoomLiga is a cWebView
     Set piColumnCount to 12
-    Set psCaption to "ZoomLiga"
+    Set psCaption to "Liga"
     Set peWebViewStyle to wvsDrilldown
     Set peViewType to vtZoom
     Set pbShowCaption to False
@@ -32,7 +35,7 @@ Object oZoomLiga is a cWebView
 
         Object oligaNombre is a cWebForm
             Entry_Item liga.Nombre
-            Set piColumnSpan to 12
+            Set piColumnSpan to 6
             Set piColumnIndex to 0
             Set peLabelPosition to lpTop
             Set psLabel to "Nombre"
@@ -40,19 +43,32 @@ Object oZoomLiga is a cWebView
 
         Object oligaPais is a cWebForm
             Entry_Item liga.Pais
-            Set piColumnSpan to 8
-            Set piColumnIndex to 0
+            Set piColumnSpan to 6
+            Set piColumnIndex to 6
             Set peLabelPosition to lpTop
             Set psLabel to "Pais"
         End_Object 
 
         Object oligaEquipos is a cWebForm
             Entry_Item liga.Equipos
-            Set piColumnSpan to 2
+            Set piColumnSpan to 5
             Set piColumnIndex to 0
             Set peLabelPosition to lpTop
-            Set psLabel to "Equipos"
+            Set psLabel to "Numero de equipos"
         End_Object 
+
+        Object oWebButtonEquipos is a cWebButton
+            Set piColumnSpan to 5
+            Set psCaption to "Lista de equipos"
+            Set piColumnIndex to 0
+            
+            WebRegisterPath ntNavigateForward oSelectEquipo
+        
+            Procedure OnClick
+                Send NavigatePath
+            End_Procedure
+        End_Object
+
     End_Object 
 
     Object oActionGroup is a cWebMenuGroup
