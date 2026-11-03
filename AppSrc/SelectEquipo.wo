@@ -141,11 +141,13 @@ Object oSelectEquipo is a cWebView
             Case (NavigateData.eNavigateType = nfFromParent)
                 // If from parent, this is a constrained drill down
                 // If Row select does main-zoom we don't need this
+                Send ShowInfoBox "Esto es una navegación hacia un padre"
                 WebSet pbRender of oDetailButton to False
                 Case Break
 
             Case (NavigateData.eNavigateType = nfFromChild)
                 // If from child, this is a probably a parent lookup from a Zoom
+                Send ShowInfoBox "Esto es una navegación hacia un hijo"
                 Case Break
 
             Case (NavigateData.eNavigateType = nfFromMain)

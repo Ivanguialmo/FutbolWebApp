@@ -159,6 +159,7 @@ Object oZoomEquipo is a cWebView
         Case Begin
             Case (NavigateData.eNavigateType = nfFromMain)
                 // If from main, this is a propbably a main file Select to Zoom.
+                Send ShowInfoBox "Esto es una navegación main"
                 Case Break
 
             Case (NavigateData.eNavigateType = nfFromParent)
