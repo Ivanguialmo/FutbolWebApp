@@ -27,6 +27,15 @@ Class cjugadorDataDictionary is a DataDictionary
 
         Set Field_Option Field jugador.Apellido DD_DISPLAYONLY to True
         Set Field_Option Field jugador.Apellido DD_REQUIRED to True
+        
+        Object oNacionalidadJugador is a CodeValidationTable
+
+        Set Type_Value to "Nacion"
+
+        End_Object
+        
+        Set Field_Value_Table Field jugador.Nacionalidad to oNacionalidadJugador
+
 
     End_Procedure
 
