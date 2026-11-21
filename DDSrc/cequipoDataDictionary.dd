@@ -17,7 +17,7 @@ Class cequipoDataDictionary is a DataDictionary
         Set Add_Client_File to jugador.File_Number
 
         Set Foreign_Field_Option DD_KEYFIELD DD_NOPUT to True
-        Set Foreign_Field_Option DD_KEYFIELD DD_FINDREQ to True
+        Set Foreign_Field_Option DD_KEYFIELD DD_FINDREQ to False
         Set Foreign_Field_Option DD_INDEXFIELD DD_NOPUT to True
         Set Foreign_Field_Option DD_DEFAULT DD_DISPLAYONLY to True
 
@@ -28,6 +28,8 @@ Class cequipoDataDictionary is a DataDictionary
         Set Field_Option Field equipo.Nombre DD_REQUIRED to True
 
         Set Field_Option Field equipo.LigaID DD_REQUIRED to True
+        
+        Set ParentNullAllowed liga.File_Number to True
 
     End_Procedure
 
