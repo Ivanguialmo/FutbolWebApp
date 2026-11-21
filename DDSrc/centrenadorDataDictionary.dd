@@ -2,6 +2,7 @@
 
 Open entrenador
 Open equipo
+Open liga
 
 Class centrenadorDataDictionary is a DataDictionary
     
@@ -12,7 +13,7 @@ Class centrenadorDataDictionary is a DataDictionary
         Set Add_Server_File to equipo.File_Number
 
         Set Foreign_Field_Option DD_KEYFIELD DD_NOPUT to True
-        Set Foreign_Field_Option DD_KEYFIELD DD_FINDREQ to True
+        Set Foreign_Field_Option DD_KEYFIELD DD_FINDREQ to False
         Set Foreign_Field_Option DD_INDEXFIELD DD_NOPUT to True
         Set Foreign_Field_Option DD_DEFAULT DD_DISPLAYONLY to True
 
@@ -25,6 +26,8 @@ Class centrenadorDataDictionary is a DataDictionary
         Set Field_Option Field entrenador.Apellido DD_DISPLAYONLY to True
         Set Field_Option Field entrenador.Apellido DD_REQUIRED to True
         
+        Set ParentNullAllowed equipo.File_Number to True
+        
         Object oNacionalidadEntrenador is a CodeValidationTable
 
         Set Type_Value to "Nacion"
@@ -34,5 +37,16 @@ Class centrenadorDataDictionary is a DataDictionary
         Set Field_Value_Table Field entrenador.Nacionalidad to oNacionalidadEntrenador
 
     End_Procedure
+    
+    Procedure Save_Main_File
+        Integer iField
+        
+        If (entrenador.EquipoID = 0) Begin
+            Field_Map entrenador.File_Number "EquipoID" to iField
+            // En DataFlex, asignar DF_NULL o limpiar el buffer antes del Forward Send Save_Main_File:
+            Set_Attribute DF_FIELD_IS_NULL of entrenador.File_Number iField to True
+        End
 
+        Forward Send Save_Main_File
+    End_Procedure
 End_Class
