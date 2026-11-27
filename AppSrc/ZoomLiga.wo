@@ -13,6 +13,7 @@ Use cligaDataDictionary.dd
 Use cWebButton.pkg
 Use cWebList.pkg
 Use cWebColumn.pkg
+Use cWebGroup.pkg
 
 Object oZoomLiga is a cWebView
     Set piColumnCount to 12
@@ -38,48 +39,53 @@ Object oZoomLiga is a cWebView
     Object oWebMainPanel is a cWebPanel
         Set piColumnCount to 12
 
-        WebSetResponsive piColumnCount rmMobile to 4
+        Object oWebGroup1 is a cWebGroup
+            Set psCaption to "Detalles de la liga"
+            Set piColumnCount to 12   
 
-        Object oligaNombre is a cWebForm
-            Entry_Item liga.Nombre
-            Set piColumnSpan to 6
-            Set piColumnIndex to 0
-            Set peLabelPosition to lpTop
-            Set psLabel to "Nombre"
-        End_Object 
+            Object oligaNombre is a cWebForm
+                Entry_Item liga.Nombre
+                Set piColumnSpan to 6
+                Set piColumnIndex to 0
+                Set peLabelPosition to lpTop
+                Set psLabel to "Nombre"
+            End_Object 
 
-        Object oligaPais is a cWebForm
-            Entry_Item liga.Pais
-            Set piColumnSpan to 6
-            Set piColumnIndex to 6
-            Set peLabelPosition to lpTop
-            Set psLabel to "Pais"
-        End_Object 
+            Object oligaPais is a cWebForm
+                Entry_Item liga.Pais
+                Set piColumnSpan to 6
+                Set piColumnIndex to 6
+                Set peLabelPosition to lpTop
+                Set psLabel to "Pais"
+            End_Object 
 
-        Object oligaEquipos is a cWebForm
-            Entry_Item liga.Equipos
-            Set piColumnSpan to 5
-            Set piColumnIndex to 0
-            Set peLabelPosition to lpTop
-            Set psLabel to "Numero de equipos"
-        End_Object 
+            Object oligaEquipos is a cWebForm
+                Entry_Item liga.Equipos
+                Set piColumnSpan to 5
+                Set piColumnIndex to 0
+                Set peLabelPosition to lpTop
+                Set psLabel to "Numero de equipos"
+            End_Object 
 
-        Object oWebButtonEquipos is a cWebButton
-            Set piColumnSpan to 5
-            Set psCaption to "Lista de equipos"
-            Set piColumnIndex to 0
+            Object oWebButtonEquipos is a cWebButton
+                Set piColumnSpan to 5
+                Set psCaption to "Lista de equipos"
+                Set piColumnIndex to 6
+                
+                WebRegisterPath ntNavigateForward oSelectEquipo
             
-            WebRegisterPath ntNavigateForward oSelectEquipo
-        
-            Procedure OnClick
-                Send NavigatePath
-            End_Procedure
+                Procedure OnClick
+                    Send NavigatePath
+                End_Procedure
+            End_Object
         End_Object
+
+        WebSetResponsive piColumnCount rmMobile to 4
 
         Object oWebListEquipos is a cWebList
             Set Server to oEquipo_DD
             Set psLabel to "Equipos"
-            Set pbShowLabel to False
+            Set pbShowLabel to True
             Set piSortColumn to 0
             
             Object oWebColumnEquipos is a cWebColumn
