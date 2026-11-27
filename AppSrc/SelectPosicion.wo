@@ -11,6 +11,7 @@ Use cWebColumn.pkg
 Use ZoomPosicion.wo
 
 Use cposicionDataDictionary.dd
+Use cWebButton.pkg
 
 Object oSelectPosicion is a cWebView
     Set psCaption to "Posiciones"
@@ -28,12 +29,13 @@ Object oSelectPosicion is a cWebView
 
 
     Object oList is a cWebList
-        Set piColumnSpan to 0
+        Set piColumnSpan to 4
         Set psCSSClass to "MobileList"
         Set pbServerOnRowClick to True
         Set pbFillHeight to True
         Set pbShowHeader to False
         Set piSortColumn to 0
+        Set piColumnIndex to 0
 
         Object oposicionNombre is a cWebColumn
             Entry_Item posicion.Nombre
@@ -145,12 +147,42 @@ Object oSelectPosicion is a cWebView
             Case Else // must be nfUndefined
                 // This may be the start of a drilldown query or this may be used for some kind of custom query.
                 // If Row select does main-zoom we don't need this
-                Send ShowInfoBox "Esto es una navegación indefinida"
                 WebSet pbRender of oDetailButton to False
 
         Case End
 
     End_Procedure
+
+    Object oWebButton2 is a cWebButton
+        Set psCaption to "<-"
+        Set piColumnIndex to 5
+    
+        Procedure OnClick
+        End_Procedure
+    End_Object
+
+    Object oWebButton1 is a cWebButton
+        Set psCaption to "->"
+        Set piColumnIndex to 6
+    
+        Procedure OnClick
+        End_Procedure
+    End_Object
+
+    Object oListaPosicionJugador is a cWebList
+        Set piColumnSpan to 4
+        Set psCSSClass to "MobileList"
+        Set pbServerOnRowClick to True
+        Set pbFillHeight to True
+        Set pbShowHeader to False
+        Set piSortColumn to 0
+        Set piColumnIndex to 8
+        
+        Object oWebColumn1 is a cWebColumn
+            Set psCaption to "column"
+            Set piWidth to 50
+        End_Object
+    End_Object
 
 
 End_Object 
